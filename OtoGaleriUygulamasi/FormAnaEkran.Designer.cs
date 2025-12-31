@@ -40,7 +40,6 @@
             this.raporlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelDGW = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelDGW.SuspendLayout();
@@ -66,9 +65,9 @@
             this.btnSatildi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSatildi.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSatildi.ForeColor = System.Drawing.Color.White;
-            this.btnSatildi.Location = new System.Drawing.Point(321, 3);
+            this.btnSatildi.Location = new System.Drawing.Point(246, 3);
             this.btnSatildi.Name = "btnSatildi";
-            this.btnSatildi.Size = new System.Drawing.Size(100, 40);
+            this.btnSatildi.Size = new System.Drawing.Size(75, 40);
             this.btnSatildi.TabIndex = 4;
             this.btnSatildi.Text = "Satıldı";
             this.btnSatildi.UseVisualStyleBackColor = true;
@@ -79,20 +78,20 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(67, 55);
+            this.label1.Location = new System.Drawing.Point(3, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(288, 25);
+            this.label1.Size = new System.Drawing.Size(315, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "OTO GALERİ YÖNETİM SİSTEMİ";
+            this.label1.Text = "🚗 OTO GALERİ YÖNETİM SİSTEMİ";
             // 
             // btnSil
             // 
             this.btnSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSil.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSil.ForeColor = System.Drawing.Color.White;
-            this.btnSil.Location = new System.Drawing.Point(215, 3);
+            this.btnSil.Location = new System.Drawing.Point(165, 3);
             this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(100, 40);
+            this.btnSil.Size = new System.Drawing.Size(75, 40);
             this.btnSil.TabIndex = 3;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
@@ -106,7 +105,7 @@
             this.btnYeniIlan.ForeColor = System.Drawing.Color.White;
             this.btnYeniIlan.Location = new System.Drawing.Point(3, 3);
             this.btnYeniIlan.Name = "btnYeniIlan";
-            this.btnYeniIlan.Size = new System.Drawing.Size(100, 40);
+            this.btnYeniIlan.Size = new System.Drawing.Size(75, 40);
             this.btnYeniIlan.TabIndex = 1;
             this.btnYeniIlan.Text = "Yeni İlan";
             this.btnYeniIlan.UseVisualStyleBackColor = false;
@@ -117,9 +116,9 @@
             this.btnDuzenle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDuzenle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnDuzenle.ForeColor = System.Drawing.Color.White;
-            this.btnDuzenle.Location = new System.Drawing.Point(109, 3);
+            this.btnDuzenle.Location = new System.Drawing.Point(84, 3);
             this.btnDuzenle.Name = "btnDuzenle";
-            this.btnDuzenle.Size = new System.Drawing.Size(100, 40);
+            this.btnDuzenle.Size = new System.Drawing.Size(75, 40);
             this.btnDuzenle.TabIndex = 2;
             this.btnDuzenle.Text = "Düzenle";
             this.btnDuzenle.UseVisualStyleBackColor = true;
@@ -158,9 +157,9 @@
             // panelDGW
             // 
             this.panelDGW.Controls.Add(this.dataGridView1);
-            this.panelDGW.Location = new System.Drawing.Point(0, 136);
+            this.panelDGW.Location = new System.Drawing.Point(0, 109);
             this.panelDGW.Name = "panelDGW";
-            this.panelDGW.Size = new System.Drawing.Size(984, 361);
+            this.panelDGW.Size = new System.Drawing.Size(984, 304);
             this.panelDGW.TabIndex = 2;
             // 
             // dataGridView1
@@ -169,26 +168,15 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(984, 361);
+            this.dataGridView1.Size = new System.Drawing.Size(984, 304);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(0, 116);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 17);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "İlan Listesi";
             // 
             // FormAnaEkran
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(984, 497);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(984, 361);
             this.Controls.Add(this.panelDGW);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
@@ -226,7 +214,6 @@
         private System.Windows.Forms.ToolStripMenuItem raporlarToolStripMenuItem;
         private System.Windows.Forms.Panel panelDGW;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label2;
     }
 }
 
