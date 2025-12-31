@@ -54,6 +54,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Ilan.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -82,7 +83,6 @@
     <Folder Include="DAL\" />
     <Folder Include="Forms\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataBase\OtoGaleriDB1.sql" />
