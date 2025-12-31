@@ -76,5 +76,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DataBase\OtoGaleriDB1.sql" />
+    <Content Include="DataBase\OtoGaleriDBViews.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
