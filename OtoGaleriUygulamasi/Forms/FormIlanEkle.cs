@@ -53,7 +53,8 @@ namespace OtoGaleriUygulamasi.Forms
         private void cmbMarka_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Marka seçilince modelleri yükle
-            if (cmbMarka.SelectedValue != null)
+
+            if (cmbMarka.SelectedValue != null && !(cmbMarka.SelectedValue is System.Data.DataRowView))
             {
                 int markaID = Convert.ToInt32(cmbMarka.SelectedValue);
                 ComboBoxHelper.ModelleriYukle(cmbModel, markaID);

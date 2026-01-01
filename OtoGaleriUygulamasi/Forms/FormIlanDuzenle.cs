@@ -98,7 +98,15 @@ namespace OtoGaleriUygulamasi.Forms
 
         private void cmbMarka_SelectedIndexChanged(object sender, EventArgs e)
         {
+            /*
             if (cmbMarka.SelectedValue != null)
+            {
+                int markaID = Convert.ToInt32(cmbMarka.SelectedValue);
+                ComboBoxHelper.ModelleriYukle(cmbModel, markaID);
+            }
+            */
+
+            if (cmbMarka.SelectedValue != null && !(cmbMarka.SelectedValue is DataRowView))
             {
                 int markaID = Convert.ToInt32(cmbMarka.SelectedValue);
                 ComboBoxHelper.ModelleriYukle(cmbModel, markaID);
