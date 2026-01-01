@@ -1,8 +1,9 @@
-﻿using System;
+﻿using OtoGaleriUygulamasi.DAL;
+using OtoGaleriUygulamasi.Forms;
+using OtoGaleriUygulamasi.Helpers;
+using System;
 using System.Data;
 using System.Windows.Forms;
-using OtoGaleriUygulamasi.DAL;
-using OtoGaleriUygulamasi.Helpers;
 
 namespace OtoGaleriUygulamasi
 {
@@ -137,8 +138,11 @@ namespace OtoGaleriUygulamasi
         
         private void btnYeniIlan_Click_1(object sender, EventArgs e)
         {
-            // İleride FormIlanEkle açılacak
-            MessageBox.Show("İlan ekleme formu yakında eklenecek!");
+            FormIlanEkle formEkle = new FormIlanEkle();
+            if (formEkle.ShowDialog() == DialogResult.OK)
+            {
+                IlanlariYukle(); // Listeyi yenile
+            }
         }
 
         private void btnDuzenle_Click_1(object sender, EventArgs e)
@@ -151,7 +155,12 @@ namespace OtoGaleriUygulamasi
             }
 
             int ilanID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["IlanID"].Value);
-            MessageBox.Show("İlan düzenleme formu yakında eklenecek! İlan ID: " + ilanID);
+
+            FormIlanDuzenle formDuzenle = new FormIlanDuzenle(ilanID);
+            if (formDuzenle.ShowDialog() == DialogResult.OK)
+            {
+                IlanlariYukle(); // Listeyi yenile
+            }
         }
 
         private void btnSil_Click_1(object sender, EventArgs e)

@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\FotografDAL.cs" />
     <Compile Include="DAL\IlanDAL.cs" />
     <Compile Include="DataBase\DatabaseHelper.cs" />
     <Compile Include="FormAnaEkran.cs">
@@ -55,12 +56,30 @@
     <Compile Include="FormAnaEkran.Designer.cs">
       <DependentUpon>FormAnaEkran.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormIlanDuzenle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormIlanDuzenle.Designer.cs">
+      <DependentUpon>FormIlanDuzenle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormIlanEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormIlanEkle.Designer.cs">
+      <DependentUpon>FormIlanEkle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\ComboBoxHelper.cs" />
     <Compile Include="Models\Ilan.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAnaEkran.resx">
       <DependentUpon>FormAnaEkran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormIlanDuzenle.resx">
+      <DependentUpon>FormIlanDuzenle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormIlanEkle.resx">
+      <DependentUpon>FormIlanEkle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -84,9 +103,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="DataBase\OtoGaleriDB1.sql" />
     <Content Include="DataBase\OtoGaleriDBViews.sql" />
