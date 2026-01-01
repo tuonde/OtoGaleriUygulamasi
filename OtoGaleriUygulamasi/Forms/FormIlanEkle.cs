@@ -113,6 +113,7 @@ namespace OtoGaleriUygulamasi.Forms
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
+            /*
             // Validasyon
             if (!ValidasyonKontrol())
                 return;
@@ -153,6 +154,78 @@ namespace OtoGaleriUygulamasi.Forms
             else
             {
                 MessageBox.Show("İlan eklenirken bir hata oluştu!", "Hata",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            */
+
+            if (!ValidasyonKontrol())
+                return;
+
+            try
+            {
+                // 1. Marka ve Model ID'lerini hazırla
+                // Safe check: SelectedValue'nun DataRowView olmadığından emin ol
+                if (cmbMarka.SelectedValue == null || cmbMarka.SelectedValue is System.Data.DataRowView) return;
+
+                int seciliMarkaID = Convert.ToInt32(cmbMarka.SelectedValue);
+                int finalModelID;
+
+                if (cmbModel.SelectedIndex != -1)
+                {
+                    finalModelID = Convert.ToInt32(cmbModel.SelectedValue);
+                }
+                else
+                {
+                    // Yeni model ekleme ve ID alma
+                    finalModelID = ModelDAL.GetirVeyaEkleModel(seciliMarkaID, cmbModel.Text);
+                }
+
+                // 2. Ilan nesnesi oluştur
+                Ilan yeniIlan = new Ilan
+                {
+                    MarkaID = seciliMarkaID,
+                    ModelID = finalModelID,
+                    Fiyat = Convert.ToDecimal(txtFiyat.Text),
+                    Yil = Convert.ToInt32(nudYil.Value),
+                    YakitTipiID = Convert.ToInt32(cmbYakitTipi.SelectedValue),
+                    VitesTipiID = Convert.ToInt32(cmbVitesTipi.SelectedValue),
+                    Kilometre = Convert.ToInt32(txtKilometre.Text),
+                    KasaTipiID = Convert.ToInt32(cmbKasaTipi.SelectedValue),
+                    RenkID = Convert.ToInt32(cmbRenk.SelectedValue),
+                    AgirHasarKayitli = chkAgirHasar.Checked,
+                    Aciklama = txtAciklama.Text,
+                    Durum = true
+                };
+
+                // 3. Veritabanına ekle
+                int yeniIlanID = IlanDAL.IlanEkle(yeniIlan);
+
+                // --- GÜNCELLENEN KISIM BURASI ---
+                if (yeniIlanID > 0)
+                {
+                    // 📷 Fotoğrafları Kaydet
+                    if (seciliFotograflar.Count > 0)
+                    {
+                        FotograflariKaydet(yeniIlanID);
+                    }
+
+                    // Başarı Mesajı
+                    MessageBox.Show("İlan ve yeni model başarıyla eklendi!", "Başarılı",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Ana formun yenilenmesi için tetikleyici
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("İlan kaydedilirken veritabanı hatası oluştu.", "Hata",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sistemsel Hata: " + ex.Message, "Hata",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -200,9 +273,21 @@ namespace OtoGaleriUygulamasi.Forms
                 return false;
             }
 
+            /*
             if (cmbModel.SelectedIndex == -1)
             {
                 MessageBox.Show("Lütfen model seçiniz!", "Uyarı",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbModel.Focus();
+                return false;
+            }
+            */
+
+            // 2. Model Kontrolü (GÜNCELLENDİ)
+            // Hem bir seçim yapılmamışsa (-1) HEM DE kutuya bir metin yazılmamışsa hata ver
+            if (cmbModel.SelectedIndex == -1 && string.IsNullOrWhiteSpace(cmbModel.Text))
+            {
+                MessageBox.Show("Lütfen bir model seçiniz veya yeni bir model adı giriniz!", "Uyarı",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cmbModel.Focus();
                 return false;

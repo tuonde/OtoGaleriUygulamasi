@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="DAL\FotografDAL.cs" />
     <Compile Include="DAL\IlanDAL.cs" />
+    <Compile Include="DAL\ModelDAL.cs" />
     <Compile Include="DataBase\DatabaseHelper.cs" />
     <Compile Include="FormAnaEkran.cs">
       <SubType>Form</SubType>
