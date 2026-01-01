@@ -183,6 +183,7 @@ namespace OtoGaleriUygulamasi.Forms
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
+            /*
             if (!ValidasyonKontrol())
                 return;
 
@@ -210,6 +211,68 @@ namespace OtoGaleriUygulamasi.Forms
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+            */
+
+            // 1. Önce verilerin geçerliliğini kontrol et
+            if (!ValidasyonKontrol())
+                return;
+
+            try
+            {
+                // 2. Marka ve Model ID hazırlığı
+                // SelectedValue'nun DataRowView hatası vermemesi için güvenli kontrol
+                if (cmbMarka.SelectedValue == null || cmbMarka.SelectedValue is System.Data.DataRowView)
+                    return;
+
+                int seciliMarkaID = Convert.ToInt32(cmbMarka.SelectedValue);
+                int finalModelID;
+
+                // Model seçimini kontrol et
+                if (cmbModel.SelectedIndex != -1)
+                {
+                    // Senaryo A: Listeden mevcut bir model seçildi
+                    finalModelID = Convert.ToInt32(cmbModel.SelectedValue);
+                }
+                else
+                {
+                    // Senaryo B: Kullanıcı yeni bir model ismi yazdı
+                    // ModelDAL üzerinden varsa ID'yi al, yoksa ekleyip ID'yi getir
+                    finalModelID = ModelDAL.GetirVeyaEkleModel(seciliMarkaID, cmbModel.Text);
+                }
+
+                // 3. Güncellenecek ilan nesnesini hazırla
+                Ilan guncelIlan = new Ilan
+                {
+                    IlanID = _ilanID,
+                    MarkaID = seciliMarkaID,
+                    ModelID = finalModelID, // Yeni veya mevcut ID
+                    Fiyat = Convert.ToDecimal(txtFiyat.Text),
+                    Yil = Convert.ToInt32(nudYil.Value),
+                    YakitTipiID = Convert.ToInt32(cmbYakitTipi.SelectedValue),
+                    VitesTipiID = Convert.ToInt32(cmbVitesTipi.SelectedValue),
+                    Kilometre = Convert.ToInt32(txtKilometre.Text),
+                    KasaTipiID = Convert.ToInt32(cmbKasaTipi.SelectedValue),
+                    RenkID = Convert.ToInt32(cmbRenk.SelectedValue),
+                    AgirHasarKayitli = chkAgirHasar.Checked,
+                    Aciklama = txtAciklama.Text,
+                    Durum = true // Veya mevcut durum korunabilir
+                };
+
+                // 4. Veritabanında güncelleme işlemini yap
+                if (IlanDAL.IlanGuncelle(guncelIlan))
+                {
+                    MessageBox.Show("İlan ve model bilgileri başarıyla güncellendi!", "Başarılı",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    this.DialogResult = DialogResult.OK; // Ana formun listeyi yenilemesi için
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Güncelleme sırasında bir hata oluştu: " + ex.Message, "Hata",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnIptal_Click(object sender, EventArgs e)
@@ -221,10 +284,13 @@ namespace OtoGaleriUygulamasi.Forms
         private bool ValidasyonKontrol()
         {
             // FormIlanEkle ile aynı validasyon
-            if (cmbMarka.SelectedIndex == -1 || cmbModel.SelectedIndex == -1)
+            // Marka seçili mi?
+            if (cmbMarka.SelectedIndex == -1) { /* Mesaj ve return false */ }
+
+            // Model seçili mi VEYA yeni bir metin yazılmış mı?
+            if (cmbModel.SelectedIndex == -1 && string.IsNullOrWhiteSpace(cmbModel.Text))
             {
-                MessageBox.Show("Lütfen marka ve model seçiniz!", "Uyarı",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Lütfen bir model seçiniz veya yeni bir model adı giriniz!", "Uyarı");
                 return false;
             }
 
