@@ -44,25 +44,114 @@ namespace OtoGaleriUygulamasi
             dataGridView1.ReadOnly = true;
             dataGridView1.AllowUserToAddRows = false;
 
-            // Kolon başlıklarını Türkçeleştir
+            // Kolon başlıklarını Türkçeleştir - NULL kontrolü ile
             if (dataGridView1.Columns.Count > 0)
             {
-                dataGridView1.Columns["IlanID"].HeaderText = "İlan No";
-                dataGridView1.Columns["MarkaAdi"].HeaderText = "Marka";
-                dataGridView1.Columns["ModelAdi"].HeaderText = "Model";
-                dataGridView1.Columns["Fiyat"].HeaderText = "Fiyat";
-                dataGridView1.Columns["Fiyat"].DefaultCellStyle.Format = "C2"; // Para formatı
-                dataGridView1.Columns["Yil"].HeaderText = "Yıl";
-                dataGridView1.Columns["YakitTipiAdi"].HeaderText = "Yakıt";
-                dataGridView1.Columns["VitesTipiAdi"].HeaderText = "Vites";
-                dataGridView1.Columns["Kilometre"].HeaderText = "KM";
-                dataGridView1.Columns["Kilometre"].DefaultCellStyle.Format = "N0"; // Binlik ayraç
-                dataGridView1.Columns["KasaTipiAdi"].HeaderText = "Kasa";
-                dataGridView1.Columns["RenkAdi"].HeaderText = "Renk";
-                dataGridView1.Columns["AgirHasar"].HeaderText = "Ağır Hasar Kaydı";
-                dataGridView1.Columns["Durum"].HeaderText = "Durum";
-                dataGridView1.Columns["IlanTarihi"].HeaderText = "İlan Tarihi";
-                dataGridView1.Columns["IlanTarihi"].DefaultCellStyle.Format = "dd.MM.yyyy";
+                // IlanID
+                if (dataGridView1.Columns.Contains("IlanID"))
+                    dataGridView1.Columns["IlanID"].HeaderText = "İlan No";
+
+                // Marka
+                if (dataGridView1.Columns.Contains("MarkaAdi"))
+                    dataGridView1.Columns["MarkaAdi"].HeaderText = "Marka";
+
+                // Model
+                if (dataGridView1.Columns.Contains("ModelAdi"))
+                    dataGridView1.Columns["ModelAdi"].HeaderText = "Model";
+
+                // Araç (Marka + Model birleşik)
+                if (dataGridView1.Columns.Contains("Arac"))
+                    dataGridView1.Columns["Arac"].HeaderText = "Araç";
+
+                // Fiyat
+                if (dataGridView1.Columns.Contains("Fiyat"))
+                {
+                    dataGridView1.Columns["Fiyat"].HeaderText = "Fiyat";
+                    dataGridView1.Columns["Fiyat"].DefaultCellStyle.Format = "C2";
+                }
+
+                // Satış Fiyatı
+                if (dataGridView1.Columns.Contains("SatisFiyati"))
+                {
+                    dataGridView1.Columns["SatisFiyati"].HeaderText = "Satış Fiyatı";
+                    dataGridView1.Columns["SatisFiyati"].DefaultCellStyle.Format = "C2";
+                }
+
+                // Yıl
+                if (dataGridView1.Columns.Contains("Yil"))
+                    dataGridView1.Columns["Yil"].HeaderText = "Yıl";
+
+                // Yakıt Tipi
+                if (dataGridView1.Columns.Contains("YakitTipiAdi"))
+                    dataGridView1.Columns["YakitTipiAdi"].HeaderText = "Yakıt";
+
+                // Vites Tipi
+                if (dataGridView1.Columns.Contains("VitesTipiAdi"))
+                    dataGridView1.Columns["VitesTipiAdi"].HeaderText = "Vites";
+
+                // Kilometre
+                if (dataGridView1.Columns.Contains("Kilometre"))
+                {
+                    dataGridView1.Columns["Kilometre"].HeaderText = "KM";
+                    dataGridView1.Columns["Kilometre"].DefaultCellStyle.Format = "N0";
+                }
+
+                // Kasa Tipi
+                if (dataGridView1.Columns.Contains("KasaTipiAdi"))
+                    dataGridView1.Columns["KasaTipiAdi"].HeaderText = "Kasa";
+
+                // Renk
+                if (dataGridView1.Columns.Contains("RenkAdi"))
+                    dataGridView1.Columns["RenkAdi"].HeaderText = "Renk";
+
+                // Ağır Hasar
+                if (dataGridView1.Columns.Contains("AgirHasar"))
+                    dataGridView1.Columns["AgirHasar"].HeaderText = "Ağır Hasar";
+
+                // Durum
+                if (dataGridView1.Columns.Contains("Durum"))
+                    dataGridView1.Columns["Durum"].HeaderText = "Durum";
+
+                // İlan Tarihi
+                if (dataGridView1.Columns.Contains("IlanTarihi"))
+                {
+                    dataGridView1.Columns["IlanTarihi"].HeaderText = "İlan Tarihi";
+                    dataGridView1.Columns["IlanTarihi"].DefaultCellStyle.Format = "dd.MM.yyyy";
+                }
+
+                // Satış Tarihi
+                if (dataGridView1.Columns.Contains("SatisTarihi"))
+                {
+                    dataGridView1.Columns["SatisTarihi"].HeaderText = "Satış Tarihi";
+                    dataGridView1.Columns["SatisTarihi"].DefaultCellStyle.Format = "dd.MM.yyyy";
+                }
+
+                // Satılma Gün Sayısı
+                if (dataGridView1.Columns.Contains("SatilmaGunSayisi"))
+                    dataGridView1.Columns["SatilmaGunSayisi"].HeaderText = "Satılma Süresi (Gün)";
+
+                // Marka Adı (Raporlar için)
+                if (dataGridView1.Columns.Contains("MarkaAdi"))
+                    dataGridView1.Columns["MarkaAdi"].HeaderText = "Marka";
+
+                // Toplam Adet
+                if (dataGridView1.Columns.Contains("ToplamAdet"))
+                    dataGridView1.Columns["ToplamAdet"].HeaderText = "Toplam";
+
+                // Satıştaki Adet
+                if (dataGridView1.Columns.Contains("SatistakiAdet"))
+                    dataGridView1.Columns["SatistakiAdet"].HeaderText = "Satışta";
+
+                // Satılan Adet
+                if (dataGridView1.Columns.Contains("SatilanAdet"))
+                    dataGridView1.Columns["SatilanAdet"].HeaderText = "Satılan";
+
+                // Ortalama Fiyat
+                if (dataGridView1.Columns.Contains("OrtalamFiyat"))
+                {
+                    dataGridView1.Columns["OrtalamFiyat"].HeaderText = "Ort. Fiyat";
+                    dataGridView1.Columns["OrtalamFiyat"].DefaultCellStyle.Format = "C2";
+                }
             }
         }
 
@@ -274,23 +363,7 @@ namespace OtoGaleriUygulamasi
         ORDER BY i.SatisTarihi DESC";
 
             dataGridView1.DataSource = DatabaseHelper.ExecuteQuery(query);
-
-            // Kolon ayarları
-            if (dataGridView1.Columns.Count > 0)
-            {
-                dataGridView1.Columns["IlanID"].HeaderText = "İlan No";
-                dataGridView1.Columns["Arac"].HeaderText = "Araç";
-                dataGridView1.Columns["SatisFiyati"].HeaderText = "Satış Fiyatı";
-                dataGridView1.Columns["SatisFiyati"].DefaultCellStyle.Format = "C2";
-                dataGridView1.Columns["Yil"].HeaderText = "Yıl";
-                dataGridView1.Columns["Kilometre"].HeaderText = "KM";
-                dataGridView1.Columns["Kilometre"].DefaultCellStyle.Format = "N0";
-                dataGridView1.Columns["IlanTarihi"].HeaderText = "İlan Tarihi";
-                dataGridView1.Columns["IlanTarihi"].DefaultCellStyle.Format = "dd.MM.yyyy";
-                dataGridView1.Columns["SatisTarihi"].HeaderText = "Satış Tarihi";
-                dataGridView1.Columns["SatisTarihi"].DefaultCellStyle.Format = "dd.MM.yyyy";
-                dataGridView1.Columns["SatilmaGunSayisi"].HeaderText = "Satılma Süresi (Gün)";
-            }
+            DataGridViewAyarla();
         }
 
         private void gelişmişAramaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -325,7 +398,6 @@ namespace OtoGaleriUygulamasi
 
         private void aylıkSatışRaporuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Bu ay
             int yil = DateTime.Now.Year;
             int ay = DateTime.Now.Month;
 
@@ -372,6 +444,7 @@ namespace OtoGaleriUygulamasi
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             dataGridView1.DataSource = dt;
+            DataGridViewAyarla();
         }
 
         private void stokDurumuToolStripMenuItem_Click(object sender, EventArgs e)
@@ -389,19 +462,8 @@ namespace OtoGaleriUygulamasi
         HAVING COUNT(i.IlanID) > 0
         ORDER BY ToplamAdet DESC";
 
-            DataTable dt = DatabaseHelper.ExecuteQuery(query);
-            dataGridView1.DataSource = dt;
-
-            // Kolon ayarları
-            if (dataGridView1.Columns.Count > 0)
-            {
-                dataGridView1.Columns["MarkaAdi"].HeaderText = "Marka";
-                dataGridView1.Columns["ToplamAdet"].HeaderText = "Toplam";
-                dataGridView1.Columns["SatistakiAdet"].HeaderText = "Satışta";
-                dataGridView1.Columns["SatilanAdet"].HeaderText = "Satılan";
-                dataGridView1.Columns["OrtalamFiyat"].HeaderText = "Ort. Fiyat";
-                dataGridView1.Columns["OrtalamFiyat"].DefaultCellStyle.Format = "C2";
-            }
+            dataGridView1.DataSource = DatabaseHelper.ExecuteQuery(query);
+            DataGridViewAyarla();
         }
 
         private void exceleAktarToolStripMenuItem_Click(object sender, EventArgs e)

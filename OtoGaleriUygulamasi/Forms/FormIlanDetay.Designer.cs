@@ -114,6 +114,7 @@
             this.btnOnceki.TabIndex = 1;
             this.btnOnceki.Text = "←";
             this.btnOnceki.UseVisualStyleBackColor = true;
+            this.btnOnceki.Click += new System.EventHandler(this.btnOnceki_Click_1);
             // 
             // btnSonraki
             // 
@@ -126,6 +127,7 @@
             this.btnSonraki.TabIndex = 2;
             this.btnSonraki.Text = "→";
             this.btnSonraki.UseVisualStyleBackColor = true;
+            this.btnSonraki.Click += new System.EventHandler(this.btnSonraki_Click_1);
             // 
             // lblFotoSayisi
             // 
@@ -419,6 +421,7 @@
             this.btnKapat.TabIndex = 4;
             this.btnKapat.Text = "X";
             this.btnKapat.UseVisualStyleBackColor = true;
+            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click_1);
             // 
             // btnSatisYap
             // 
@@ -431,6 +434,7 @@
             this.btnSatisYap.TabIndex = 3;
             this.btnSatisYap.Text = "Satış Yap";
             this.btnSatisYap.UseVisualStyleBackColor = true;
+            this.btnSatisYap.Click += new System.EventHandler(this.btnSatisYap_Click_1);
             // 
             // FormIlanDetay
             // 
@@ -442,6 +446,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "FormIlanDetay";
             this.Text = "FormIlanDetay";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormIlanDetay_FormClosing_1);
             this.Load += new System.EventHandler(this.FormIlanDetay_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

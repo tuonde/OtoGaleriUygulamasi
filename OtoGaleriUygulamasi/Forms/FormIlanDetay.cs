@@ -208,5 +208,110 @@ namespace OtoGaleriUygulamasi.Forms
                 picFotograf.Image = null;
             }
         }
+
+        private void btnOnceki_Click_1(object sender, EventArgs e)
+        {
+            if (_fotograflar == null || _fotograflar.Rows.Count == 0)
+                return;
+
+            _mevcutFotoIndex--;
+
+            // Eğer ilk fotoğraftaysa, son fotoğrafa git
+            if (_mevcutFotoIndex < 0)
+                _mevcutFotoIndex = _fotograflar.Rows.Count - 1;
+
+            FotografiGoster();
+        }
+
+        private void btnSonraki_Click_1(object sender, EventArgs e)
+        {
+            if (_fotograflar == null || _fotograflar.Rows.Count == 0)
+                return;
+
+            _mevcutFotoIndex++;
+
+            // Eğer son fotoğraftaysa, ilk fotoğrafa dön
+            if (_mevcutFotoIndex >= _fotograflar.Rows.Count)
+                _mevcutFotoIndex = 0;
+
+            FotografiGoster();
+        }
+
+        private void btnSatisYap_Click_1(object sender, EventArgs e)
+        {
+            // Satış fiyatı al
+            decimal ilanFiyati = Convert.ToDecimal(_ilanBilgisi["Fiyat"]);
+
+            // InputBox ile fiyat girişi al
+            string fiyatGirdisi = Microsoft.VisualBasic.Interaction.InputBox(
+                $"İlan Fiyatı: {ilanFiyati:C2}\n\nLütfen satış fiyatını giriniz:",
+                "Satış Fiyatı",
+                ilanFiyati.ToString());
+
+            // İptal edildi mi kontrol et
+            if (string.IsNullOrWhiteSpace(fiyatGirdisi))
+                return;
+
+            // Geçerli bir sayı mı kontrol et
+            if (!decimal.TryParse(fiyatGirdisi, out decimal satisFiyati) || satisFiyati <= 0)
+            {
+                MessageBox.Show("Lütfen geçerli bir fiyat giriniz!", "Uyarı",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Onay mesajı
+            decimal fark = ilanFiyati - satisFiyati;
+            string farkMesaji = fark >= 0
+                ? $"Fark: {fark:C2} (İndirim)"
+                : $"Fark: {Math.Abs(fark):C2} (Fazla)";
+
+            DialogResult result = MessageBox.Show(
+                $"İlan Fiyatı: {ilanFiyati:C2}\n" +
+                $"Satış Fiyatı: {satisFiyati:C2}\n" +
+                $"{farkMesaji}\n\n" +
+                "Satışı onaylıyor musunuz?",
+                "Satış Onayı",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                // Fiyatı güncelle ve satıldı olarak işaretle
+                if (IlanDAL.IlanSatisFiyatiGuncelle(_ilanID, satisFiyati))
+                {
+                    MessageBox.Show(
+                        $"Satış başarıyla gerçekleştirildi!\n\n" +
+                        $"Araç: {_ilanBilgisi["MarkaAdi"]} {_ilanBilgisi["ModelAdi"]}\n" +
+                        $"Satış Fiyatı: {satisFiyati:C2}",
+                        "Başarılı",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Satış işlemi sırasında bir hata oluştu!", "Hata",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnKapat_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FormIlanDetay_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            // PictureBox'taki resmi bellekten temizle
+            if (picFotograf.Image != null)
+            {
+                picFotograf.Image.Dispose();
+                picFotograf.Image = null;
+            }
+        }
     }
 }
