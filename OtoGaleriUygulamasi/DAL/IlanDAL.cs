@@ -227,6 +227,43 @@ namespace OtoGaleriUygulamasi.DAL
             
             return DatabaseHelper.ExecuteQuery(query, parameters);
         }
+
+        // İlanı satıldı olarak işaretle VE satış fiyatını güncelle
+        public static bool IlanSatisFiyatiGuncelle(int ilanID, decimal satisFiyati)
+        {
+            string query = @"
+        UPDATE Ilan 
+        SET Durum = 0,
+            Fiyat = @SatisFiyati,
+            SatisTarihi = GETDATE(),
+            GuncellemeTarihi = GETDATE()
+        WHERE IlanID = @IlanID";
+
+            SqlParameter[] parameters = {
+        new SqlParameter("@IlanID", ilanID),
+        new SqlParameter("@SatisFiyati", satisFiyati)
+    };
+
+            return DatabaseHelper.ExecuteNonQuery(query, parameters) > 0;
+        }
+
+        public static DataTable IstatistikleriGetir()
+        {
+            string query = @"
+        SELECT 
+            COUNT(*) AS ToplamIlan,
+            SUM(CASE WHEN Durum = 1 THEN 1 ELSE 0 END) AS Satista,
+            SUM(CASE WHEN Durum = 0 THEN 1 ELSE 0 END) AS Satilan,
+            AVG(Fiyat) AS OrtalamFiyat,
+            MIN(Fiyat) AS MinFiyat,
+            MAX(Fiyat) AS MaxFiyat,
+            SUM(CASE WHEN DATEDIFF(DAY, IlanTarihi, GETDATE()) <= 7 THEN 1 ELSE 0 END) AS SonBirHafta,
+            SUM(CASE WHEN DATEDIFF(DAY, IlanTarihi, GETDATE()) <= 30 THEN 1 ELSE 0 END) AS SonBirAy
+        FROM Ilan
+        WHERE Aktif = 1";
+
+            return DatabaseHelper.ExecuteQuery(query);
+        }
     }
 }
 

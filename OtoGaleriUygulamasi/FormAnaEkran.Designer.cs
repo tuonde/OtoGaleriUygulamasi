@@ -40,6 +40,16 @@
             this.raporlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelDGW = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.yeniİlanCtrlNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.çıkışAltF4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tümİlanlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.satıştaOlanlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.satılanlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gelişmişAramaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.istatistiklerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aylıkSatışRaporuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stokDurumuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exceleAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelDGW.SuspendLayout();
@@ -139,18 +149,31 @@
             // 
             // dosyaToolStripMenuItem
             // 
+            this.dosyaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.yeniİlanCtrlNToolStripMenuItem,
+            this.çıkışAltF4ToolStripMenuItem});
             this.dosyaToolStripMenuItem.Name = "dosyaToolStripMenuItem";
             this.dosyaToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.dosyaToolStripMenuItem.Text = "Dosya";
             // 
             // ilanlarToolStripMenuItem
             // 
+            this.ilanlarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tümİlanlarToolStripMenuItem,
+            this.satıştaOlanlarToolStripMenuItem,
+            this.satılanlarToolStripMenuItem,
+            this.gelişmişAramaToolStripMenuItem});
             this.ilanlarToolStripMenuItem.Name = "ilanlarToolStripMenuItem";
             this.ilanlarToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.ilanlarToolStripMenuItem.Text = "İlanlar";
             // 
             // raporlarToolStripMenuItem
             // 
+            this.raporlarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.istatistiklerToolStripMenuItem,
+            this.aylıkSatışRaporuToolStripMenuItem,
+            this.stokDurumuToolStripMenuItem,
+            this.exceleAktarToolStripMenuItem});
             this.raporlarToolStripMenuItem.Name = "raporlarToolStripMenuItem";
             this.raporlarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.raporlarToolStripMenuItem.Text = "Raporlar";
@@ -171,6 +194,77 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(984, 304);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // yeniİlanCtrlNToolStripMenuItem
+            // 
+            this.yeniİlanCtrlNToolStripMenuItem.Name = "yeniİlanCtrlNToolStripMenuItem";
+            this.yeniİlanCtrlNToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.yeniİlanCtrlNToolStripMenuItem.Text = "Yeni İlan (Ctrl+N)";
+            this.yeniİlanCtrlNToolStripMenuItem.Click += new System.EventHandler(this.yeniİlanCtrlNToolStripMenuItem_Click);
+            // 
+            // çıkışAltF4ToolStripMenuItem
+            // 
+            this.çıkışAltF4ToolStripMenuItem.Name = "çıkışAltF4ToolStripMenuItem";
+            this.çıkışAltF4ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.çıkışAltF4ToolStripMenuItem.Text = "Çıkış (Alt+F4)";
+            this.çıkışAltF4ToolStripMenuItem.Click += new System.EventHandler(this.çıkışAltF4ToolStripMenuItem_Click);
+            // 
+            // tümİlanlarToolStripMenuItem
+            // 
+            this.tümİlanlarToolStripMenuItem.Name = "tümİlanlarToolStripMenuItem";
+            this.tümİlanlarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tümİlanlarToolStripMenuItem.Text = "Tüm İlanlar";
+            this.tümİlanlarToolStripMenuItem.Click += new System.EventHandler(this.tümİlanlarToolStripMenuItem_Click);
+            // 
+            // satıştaOlanlarToolStripMenuItem
+            // 
+            this.satıştaOlanlarToolStripMenuItem.Name = "satıştaOlanlarToolStripMenuItem";
+            this.satıştaOlanlarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.satıştaOlanlarToolStripMenuItem.Text = "Satışta Olanlar";
+            this.satıştaOlanlarToolStripMenuItem.Click += new System.EventHandler(this.satıştaOlanlarToolStripMenuItem_Click);
+            // 
+            // satılanlarToolStripMenuItem
+            // 
+            this.satılanlarToolStripMenuItem.Name = "satılanlarToolStripMenuItem";
+            this.satılanlarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.satılanlarToolStripMenuItem.Text = "Satılanlar";
+            this.satılanlarToolStripMenuItem.Click += new System.EventHandler(this.satılanlarToolStripMenuItem_Click);
+            // 
+            // gelişmişAramaToolStripMenuItem
+            // 
+            this.gelişmişAramaToolStripMenuItem.Name = "gelişmişAramaToolStripMenuItem";
+            this.gelişmişAramaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gelişmişAramaToolStripMenuItem.Text = "Gelişmiş Arama";
+            this.gelişmişAramaToolStripMenuItem.Click += new System.EventHandler(this.gelişmişAramaToolStripMenuItem_Click);
+            // 
+            // istatistiklerToolStripMenuItem
+            // 
+            this.istatistiklerToolStripMenuItem.Name = "istatistiklerToolStripMenuItem";
+            this.istatistiklerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.istatistiklerToolStripMenuItem.Text = "İstatistikler";
+            this.istatistiklerToolStripMenuItem.Click += new System.EventHandler(this.istatistiklerToolStripMenuItem_Click);
+            // 
+            // aylıkSatışRaporuToolStripMenuItem
+            // 
+            this.aylıkSatışRaporuToolStripMenuItem.Name = "aylıkSatışRaporuToolStripMenuItem";
+            this.aylıkSatışRaporuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aylıkSatışRaporuToolStripMenuItem.Text = "Aylık Satış Raporu";
+            this.aylıkSatışRaporuToolStripMenuItem.Click += new System.EventHandler(this.aylıkSatışRaporuToolStripMenuItem_Click);
+            // 
+            // stokDurumuToolStripMenuItem
+            // 
+            this.stokDurumuToolStripMenuItem.Name = "stokDurumuToolStripMenuItem";
+            this.stokDurumuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stokDurumuToolStripMenuItem.Text = "Stok Durumu";
+            this.stokDurumuToolStripMenuItem.Click += new System.EventHandler(this.stokDurumuToolStripMenuItem_Click);
+            // 
+            // exceleAktarToolStripMenuItem
+            // 
+            this.exceleAktarToolStripMenuItem.Name = "exceleAktarToolStripMenuItem";
+            this.exceleAktarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exceleAktarToolStripMenuItem.Text = "Excel\'e Aktar";
+            this.exceleAktarToolStripMenuItem.Click += new System.EventHandler(this.exceleAktarToolStripMenuItem_Click);
             // 
             // FormAnaEkran
             // 
@@ -215,6 +309,16 @@
         private System.Windows.Forms.ToolStripMenuItem raporlarToolStripMenuItem;
         private System.Windows.Forms.Panel panelDGW;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ToolStripMenuItem yeniİlanCtrlNToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem çıkışAltF4ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tümİlanlarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem satıştaOlanlarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem satılanlarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gelişmişAramaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem istatistiklerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aylıkSatışRaporuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stokDurumuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exceleAktarToolStripMenuItem;
     }
 }
 

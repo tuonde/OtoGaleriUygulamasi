@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -57,6 +58,12 @@
     <Compile Include="FormAnaEkran.Designer.cs">
       <DependentUpon>FormAnaEkran.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormIlanDetay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormIlanDetay.Designer.cs">
+      <DependentUpon>FormIlanDetay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormIlanDuzenle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,11 +77,15 @@
       <DependentUpon>FormIlanEkle.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ComboBoxHelper.cs" />
+    <Compile Include="Helpers\ExportHelper.cs" />
     <Compile Include="Models\Ilan.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAnaEkran.resx">
       <DependentUpon>FormAnaEkran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormIlanDetay.resx">
+      <DependentUpon>FormIlanDetay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormIlanDuzenle.resx">
       <DependentUpon>FormIlanDuzenle.cs</DependentUpon>
